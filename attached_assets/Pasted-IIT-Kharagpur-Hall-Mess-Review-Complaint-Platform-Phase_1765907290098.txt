@@ -1,0 +1,649 @@
+IIT Kharagpur Hall Mess Review & Complaint Platform
+
+Phase 1: Radhakrishnan Hall (RK Hall)
+
+1. Project Goal
+
+Build a secure, dark-themed, professional website for IIT Kharagpur students where they can:
+
+Review hall mess food daily
+
+Rate meals (breakfast, lunch, snacks, dinner)
+
+Submit complaints/suggestions
+
+View past reviews & trends
+
+Phase 1 scope:
+👉 Only RK (Radhakrishnan) Hall
+
+The system must be scalable so that more halls can be added later without rewriting code.
+
+2. Tech Stack (Mandatory)
+Frontend
+
+HTML
+
+CSS (custom CSS, no heavy frameworks)
+
+Vanilla JavaScript
+
+Dark theme (professional, clean, minimal)
+
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB (Mongoose)
+
+Authentication
+
+Email + password
+
+JWT-based authentication
+
+Email domain validation
+
+3. Access Control & Authentication (Very Important)
+Email Restriction
+
+Only emails ending with:
+
+@iitkgp.ac.in
+
+
+Any other email domain must be rejected during signup
+
+Show a clear error:
+
+“Only IIT Kharagpur students are allowed”
+
+User Rules
+
+One account per email
+
+Students can:
+
+Post reviews
+
+Submit complaints
+
+Edit their own reviews (within same day only)
+
+4. Core Website Structure
+4.1 Landing Page (Public)
+
+Short description of the platform
+
+“Login with IITKGP Email” button
+
+Dark theme with professional UI
+
+Hall-based concept explained briefly
+
+4.2 Student Dashboard (After Login)
+
+Dashboard should include:
+
+Welcome message with student name
+
+Current date
+
+Quick actions:
+
+“Review Today’s Food”
+
+“Submit Complaint”
+
+Summary cards:
+
+Today’s average rating
+
+Total reviews today
+
+Pending complaints (optional)
+
+5. Hall Structure (Important for Scalability)
+
+Although Phase 1 is only RK Hall, the backend must support:
+
+Halls
+ ├── RK Hall
+ ├── (future halls: LBS, MMM, Nehru, etc.)
+
+
+Each hall should have:
+
+Unique Hall ID
+
+Hall name
+
+Mess data linked to it
+
+6. Mess Review System (Main Feature)
+Daily Review Format (Per Hall)
+
+For each date, allow reviews for:
+
+Meal Type	Rating (1–5)	Comment (optional)
+Breakfast	⭐⭐⭐⭐⭐	Text
+Lunch	⭐⭐⭐⭐⭐	Text
+Snacks	⭐⭐⭐⭐⭐	Text
+Dinner	⭐⭐⭐⭐⭐	Text
+Rules
+
+One review per student per day
+
+Average rating should be auto-calculated
+
+Reviews must be timestamped
+
+7. Complaint & Suggestion System
+Complaint Form Fields
+
+Date (auto-filled)
+
+Meal type (Breakfast/Lunch/Snacks/Dinner/General)
+
+Complaint text (mandatory)
+
+Optional category:
+
+Hygiene
+
+Taste
+
+Quantity
+
+Behaviour
+
+Other
+
+Complaint Visibility
+
+Complaints are anonymous to other students
+
+Admin (future) can see user info
+
+Complaints stored securely in DB
+
+8. Hall Page (RK Hall Page)
+
+Dedicated page for RK Hall with:
+
+Today’s menu ratings
+
+Average ratings (meal-wise)
+
+Past 7 days performance (simple list or bar view)
+
+Recent complaints (without names)
+
+“Review Today” button
+
+9. UI / UX Requirements
+
+Dark theme (black / dark grey base)
+
+Accent color: subtle (blue or green)
+
+Clean typography
+
+Mobile responsive
+
+No flashy animations
+
+Professional college-level design
+
+10. Database Design (High-Level)
+Users Collection
+{
+  name,
+  email,
+  passwordHash,
+  hall: "RK",
+  createdAt
+}
+
+Halls Collection
+{
+  hallName: "Radhakrishnan Hall",
+  hallCode: "RK"
+}
+
+Reviews Collection
+{
+  userId,
+  hallCode,
+  date,
+  breakfast: { rating, comment },
+  lunch: { rating, comment },
+  snacks: { rating, comment },
+  dinner: { rating, comment },
+  createdAt
+}
+
+Complaints Collection
+{
+  userId,
+  hallCode,
+  mealType,
+  text,
+  category,
+  date,
+  createdAt
+}
+
+11. Security & Best Practices
+
+Passwords must be hashed (bcrypt)
+
+JWT authentication
+
+Prevent duplicate daily reviews
+
+Input validation on backend
+
+Rate limiting on complaints (basic)
+
+12. Future Scope (Keep in Mind While Coding)
+
+Developer should keep code modular for:
+
+Adding new halls
+
+Admin dashboard (hall reps)
+
+Mess contractor view
+
+Analytics & graphs
+
+Push/email notifications
+
+Monetization later (ads, sponsorships)
+
+13. Deliverables
+
+Complete frontend (HTML/CSS/JS)
+
+Backend with Node + MongoDB
+
+Clean folder structure
+
+README with setup instructions
+
+Deployment-ready code
+
+Founder Note (Important)
+
+This platform is meant for daily use by IIT students, so stability, clarity ,fancy features.
+Code should be clean, scalable, and easy to extend to other halls.
+
+
+
+
+EXACT PAGE LAYOUT DESIGN
+IIT KGP Hall Mess Review Platform (RK Hall – Phase 1)
+
+Theme: Dark, clean, professional
+Audience: IIT students (daily usage)
+Design rule: Information first, minimal clutter
+
+0️⃣ GLOBAL DESIGN RULES (MANDATORY)
+
+Background: #0f172a (dark navy) or #111827
+
+Card background: #1f2933
+
+Text:
+
+Primary: #e5e7eb
+
+Secondary: #9ca3af
+
+Accent color: #22c55e (green) OR #3b82f6 (blue)
+
+Border radius: 8px
+
+Font:
+
+Headings: Inter / Poppins
+
+Body: Inter / system-ui
+
+No emojis
+
+No flashy gradients
+
+No infinite animations
+
+1️⃣ LANDING PAGE (Public – Before Login)
+Purpose
+
+Explain what the site is and force IIT email login.
+
+Layout Structure (Top → Bottom)
+🔹 Top Navbar
+
+Left: Website Name
+
+Example: HallMess | IIT KGP
+
+Right:
+
+Login button (accent color)
+
+🔹 Hero Section
+
+Centered card
+
+Left (Text):
+
+Heading (big):
+
+“Daily Mess Reviews for IIT Kharagpur Halls”
+
+Subtext:
+
+“Rate meals. Raise issues. Improve food quality — together.”
+
+CTA Button:
+
+Login with IITKGP Email
+
+Right (Optional):
+
+Simple illustration / hall icon (not necessary initially)
+
+🔹 Info Section (3 Cards)
+
+Horizontal cards:
+
+Daily Reviews
+
+Breakfast, Lunch, Snacks, Dinner
+
+Verified Students Only
+
+@iitkgp.ac.in restriction
+
+Hall-wise System
+
+RK Hall (more coming soon)
+
+🔹 Footer
+
+Text:
+
+“Built by IIT Kharagpur students, for IIT Kharagpur students.”
+
+Small links:
+
+Privacy
+
+Contact
+
+2️⃣ AUTH PAGE (LOGIN / SIGNUP)
+Layout
+
+Centered card only (no distractions)
+
+Card Contents
+
+Title:
+
+Login
+
+Fields:
+
+Email
+
+Password
+
+Note below email:
+
+“Only @iitkgp.ac.in email allowed”
+
+Button:
+
+Login
+
+Error messages:
+
+Red, simple text (no alerts)
+
+Validation Rules
+
+Reject signup if email does NOT end with @iitkgp.ac.in
+
+Show message:
+
+“Only IIT Kharagpur students can access this platform.”
+
+3️⃣ STUDENT DASHBOARD (After Login)
+
+This is the main screen students will open daily.
+
+Layout: Sidebar + Main Content
+🔹 Left Sidebar (Fixed)
+
+Logo / Site Name
+
+Menu:
+
+Dashboard
+
+Halls
+
+Submit Complaint
+
+My Reviews
+
+Logout
+
+🔹 Main Dashboard Content
+Top Section
+
+Greeting:
+
+“Welcome, Ritesh”
+
+Subtext:
+
+“RK Hall · Today: 16 Sept 2025”
+
+Stats Cards (4 cards, grid)
+Card	Content
+Breakfast	⭐ 3.8
+Lunch	⭐ 4.1
+Snacks	⭐ 3.5
+Dinner	⭐ 4.0
+Action Buttons
+
+Review Today’s Food (Primary)
+
+Submit a Complaint (Secondary)
+
+Recent Activity Section
+
+Last 3 reviews (anonymous)
+
+Recent complaints (no names)
+
+4️⃣ HALLS LIST PAGE
+Purpose
+
+Even though only RK exists now, architecture must be hall-based.
+
+Layout
+
+Title:
+
+“Halls”
+
+Grid cards (1 for now)
+
+Hall Card (RK Hall)
+
+Hall Name:
+
+Radhakrishnan Hall (RK)
+
+Badge:
+
+Active
+
+Button:
+
+View Hall
+
+5️⃣ RK HALL PAGE (CORE PAGE)
+
+This is the most important page.
+
+Top Section
+
+Hall Name:
+
+Radhakrishnan Hall
+
+Subtext:
+
+“Mess Performance & Student Feedback”
+
+Today’s Ratings (4 Cards)
+
+Each card:
+
+Meal Name
+
+Average Rating
+
+Progress bar
+
+Example:
+
+Breakfast
+⭐⭐⭐⭐☆
+Avg: 4.0
+
+Review Today Section
+
+Button:
+
+Submit Today’s Review
+
+If already submitted:
+
+Disabled button
+
+Text:
+
+“You’ve already reviewed today”
+
+Past 7 Days Section
+
+Simple table:
+
+Date	Breakfast	Lunch	Snacks	Dinner
+15 Sept	3.8	4.0	3.4	4.1
+Complaints Section
+
+Recent complaints (anonymous)
+
+Show:
+
+Meal type
+
+Category
+
+Complaint text
+
+Date
+
+6️⃣ REVIEW SUBMISSION PAGE
+Layout
+
+Single clean form (card)
+
+Fields
+
+For EACH meal:
+
+Rating (1–5 stars)
+
+Optional comment
+
+Meals:
+
+Breakfast
+
+Lunch
+
+Snacks
+
+Dinner
+
+Submit Button
+
+Submit Review
+
+Rules
+
+One submission per day
+
+Editable only same day
+
+7️⃣ COMPLAINT SUBMISSION PAGE
+Layout
+
+Simple, serious design
+
+Fields
+
+Meal Type (Dropdown)
+
+Category (Dropdown)
+
+Complaint Text (Textarea)
+
+Submit Button
+
+Submit Complaint
+
+Confirmation
+
+After submit:
+
+“Complaint submitted successfully.”
+
+8️⃣ MY REVIEWS PAGE
+Layout
+
+Table view
+
+Date	Hall	Avg Rating	Action
+15 Sept	RK	3.8	View
+9️⃣ RESPONSIVENESS RULES
+
+Sidebar collapses on mobile
+
+Cards become vertical stack
+
+Buttons full-width on small screens
+
+🔟 PROFESSIONAL SUGGESTIONS (Founder to Developer)
+
+Write reusable components
+
+Keep hall logic dynamic
+
+Never hardcode “RK” everywhere
+
+Clean folder structure
+
+Comments where logic is important
+
+Performance > animations
