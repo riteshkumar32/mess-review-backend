@@ -84,15 +84,45 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="px-6 py-6 border-t border-border text-center">
         <p className="text-sm text-muted-foreground">
-          Built by IIT Kharagpur students, for IIT Kharagpur students.
+          By RK For RK
         </p>
         <div className="flex items-center justify-center gap-4 mt-2">
-          <button className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-            Privacy
-          </button>
-          <button className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-            Contact
-          </button>
+          {/* Privacy */}
+  <a
+    href="https://www.iitkgp.ac.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+  >
+    Privacy
+  </a>
+
+  {/* Contact */}
+  <a
+    href="https://www.facebook.com/people/Ritesh-Kumar/pfbid0qrV5jeLZLpJ4ZiyNdETyX5z8aACDq4X1rvQFXmYXM4e9Yai1YBi7WZ2S4yGxAG6Fl/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+  >
+    Contact
+  </a>
+          <a
+  href="https://www.instagram.com/riitesh061/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+>
+  Instagram
+</a>
+
+<a
+  href="https://www.linkedin.com/in/ritesh-kumar32/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+>
+  LinkedIn
+</a>
         </div>
       </footer>
     </div>
